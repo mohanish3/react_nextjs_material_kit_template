@@ -6,7 +6,6 @@ import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
@@ -17,6 +16,7 @@ import IconButton from "@material-ui/core/IconButton";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
+import LoginModal from "components/LoginModal/LoginModal.js";
 
 import styles from "assets/jss/nextjs-material-kit/components/headerLinksStyle.js";
 
@@ -81,16 +81,8 @@ export default function HeaderLinks(props) {
           <Icon className={classes.icons}>call</Icon> Contact Us
         </Button>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button color="transparent" className={classes.navLink}>
-          Register
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button color="transparent" className={classes.navLink}>
-          Login
-        </Button>
-      </ListItem>
+      <LoginModal classes={classes} register={true} />
+      <LoginModal classes={classes} />
     </List>
   );
 }

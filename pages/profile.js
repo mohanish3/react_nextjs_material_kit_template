@@ -13,7 +13,7 @@ import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import HeaderLinksLoggedIn from "components/Header/HeaderLinksLoggedIn.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 
@@ -36,7 +36,7 @@ const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {
   const classes = useStyles();
-  const { ...rest } = props;
+  const { email, ...rest } = props;
   const imageClasses = classNames(
     classes.imgRaised,
     classes.imgRoundedCircle,
@@ -47,12 +47,12 @@ export default function ProfilePage(props) {
     <div>
       <Header
         color="transparent"
-        brand="NextJS Material Kit"
-        rightLinks={<HeaderLinks />}
+        brand="Material Tech"
+        rightLinks={<HeaderLinksLoggedIn email={email} />}
         fixed
         changeColorOnScroll={{
           height: 200,
-          color: "white"
+          color: "white",
         }}
         {...rest}
       />
@@ -126,7 +126,7 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
+                      ),
                     },
                     {
                       tabButton: "Work",
@@ -163,7 +163,7 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
+                      ),
                     },
                     {
                       tabButton: "Favorite",
@@ -200,8 +200,8 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
-                    }
+                      ),
+                    },
                   ]}
                 />
               </GridItem>
