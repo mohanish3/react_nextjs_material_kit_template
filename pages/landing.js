@@ -18,9 +18,10 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/nextjs-material-kit/pages/landingPage.js";
 
 // Sections for this page
-import ProductSection from "pages-sections/LandingPage-Sections/ProductSection.js";
 import TeamSection from "pages-sections/LandingPage-Sections/TeamSection.js";
 import WorkSection from "pages-sections/LandingPage-Sections/WorkSection.js";
+import FeatureSection from "pages-sections/LandingPage-Sections/FeatureSection.js";
+import PricingSection from "pages-sections/LandingPage-Sections/PricingSection.js";
 
 const dashboardRoutes = [];
 
@@ -30,16 +31,16 @@ export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   return (
-    <div>
+    <div id="home">
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="NextJS Material Kit"
+        brand="Material tech"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
           height: 400,
-          color: "white"
+          color: "white",
         }}
         {...rest}
       />
@@ -49,21 +50,23 @@ export default function LandingPage(props) {
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.title}>Your Story Starts With Us.</h1>
               <h4>
-                Every landing page needs a small description after the big bold
-                title, that{"'"}s why we added this text here. Add here all the
-                information that can make you or your product create the first
-                impression.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent eu pharetra eros, blandit cursus libero. Curabitur at
+                metus et lacus accumsan interdum facilisis et tortor. Proin
+                accumsan ante ut porttitor vehicula. Nulla facilisi. Donec
+                libero lacus, bibendum at aliquam ullamcorper, viverra et
+                lectus.
               </h4>
               <br />
               <Button
-                color="danger"
+                color="white"
                 size="lg"
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
+                href="https://github.com/mohanish3/react_nextjs_material_kit_template"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fas fa-play" />
-                Watch video
+                <i className="fas fa-code" />
+                Open github page
               </Button>
             </GridItem>
           </GridContainer>
@@ -71,8 +74,9 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <ProductSection />
+          <FeatureSection />
           <TeamSection />
+          <PricingSection />
           <WorkSection />
         </div>
       </div>

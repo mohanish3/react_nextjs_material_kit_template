@@ -6,7 +6,6 @@ import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
@@ -17,6 +16,7 @@ import IconButton from "@material-ui/core/IconButton";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
+import LoginModal from "components/LoginModal/LoginModal.js";
 
 import styles from "assets/jss/nextjs-material-kit/components/headerLinksStyle.js";
 
@@ -27,7 +27,10 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-        <CustomDropdown
+        <Button href="#home" color="transparent" className={classes.navLink}>
+          <Icon className={classes.icons}>home</Icon>Home
+        </Button>
+        {/*<CustomDropdown
           noLiPadding
           navDropdown
           buttonText="Components"
@@ -48,84 +51,38 @@ export default function HeaderLinks(props) {
               Documentation
             </a>
           ]}
-        />
+        />*/}
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
+          href="#features"
           color="transparent"
-          target="_blank"
           className={classes.navLink}
         >
-          <Icon className={classes.icons}>unarchive</Icon> Upgrade to PRO
+          <Icon className={classes.icons}>unarchive</Icon> Features
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button href="#team" color="transparent" className={classes.navLink}>
+          <Icon className={classes.icons}>people</Icon> Team
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button href="#pricing" color="transparent" className={classes.navLink}>
+          <Icon className={classes.icons}>euro</Icon> Pricing
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit?ref=njsmk-navbar"
+          href="#contactus"
           color="transparent"
-          target="_blank"
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Download
+          <Icon className={classes.icons}>call</Icon> Contact Us
         </Button>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>*/}
-        <Tooltip
-          id="instagram-twitter"
-          title="Follow us on twitter"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            href="https://twitter.com/CreativeTim?ref=creativetim"
-            target="_blank"
-            color="transparent"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-twitter"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-facebook"
-          title="Follow us on facebook"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.facebook.com/CreativeTim?ref=creativetim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-facebook"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-tooltip"
-          title="Follow us on instagram"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-instagram"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
+      <LoginModal classes={classes} register={true} />
+      <LoginModal classes={classes} />
     </List>
   );
 }

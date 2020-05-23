@@ -14,27 +14,46 @@ import styles from "assets/jss/nextjs-material-kit/pages/landingPageSections/wor
 
 const useStyles = makeStyles(styles);
 
+const submitForm = (ev) => {
+  ev.preventDefault();
+  const form = ev.target;
+  const data = new FormData(form);
+  const xhr = new XMLHttpRequest();
+  xhr.open(form.method, form.action);
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+    if (xhr.status === 200) {
+      form.reset();
+      alert("Sent email");
+    } else {
+      alert("Error sending email");
+    }
+  };
+  xhr.send(data);
+};
+
 export default function WorkSection() {
   const classes = useStyles();
   return (
-    <div className={classes.section}>
+    <div className={classes.section} id="contactus">
       <GridContainer justify="center">
         <GridItem cs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Work with us</h2>
-          <h4 className={classes.description}>
-            Divide details about your product or agency work into parts. Write a
-            few lines about each one and contact us about any further
-            collaboration. We will responde get back to you in a couple of
-            hours.
-          </h4>
-          <form>
+          <h2 className={classes.title}>Contact us</h2>
+
+          <form
+            onSubmit={submitForm}
+            action="https://formspree.io/mlepgozy"
+            method="POST"
+          >
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
                 <CustomInput
                   labelText="Your Name"
                   id="name"
+                  name="name"
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
@@ -42,25 +61,27 @@ export default function WorkSection() {
                 <CustomInput
                   labelText="Your Email"
                   id="email"
+                  name="email"
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
               <CustomInput
                 labelText="Your Message"
                 id="message"
+                name="message"
                 formControlProps={{
                   fullWidth: true,
-                  className: classes.textArea
+                  className: classes.textArea,
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5
+                  rows: 5,
                 }}
               />
               <GridItem xs={12} sm={12} md={4} className={classes.textCenter}>
-                <Button color="primary">Send Message</Button>
+                <Button color="primary" type="submit" name="Send">Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>
